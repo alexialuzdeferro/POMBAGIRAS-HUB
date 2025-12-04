@@ -3,184 +3,730 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kit de Divulgação | Almas de Pombagira</title>
+    <title>ALMAS DE POMBAGIRA | ALEXIA MELUSINE</title>
+    <meta name="description" content="Portal das Pombagiras. Alexia Melusine - Rosa de Fogo, Luz de Ferro.">
+    
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lato:wght@300;700&family=Playfair+Display:ital,wght@1,400&display=swap" rel="stylesheet">
+    
+    <!-- Fontes Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Configuração do Tailwind -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'cinzel': ['Cinzel', 'serif'],
+                        'playfair': ['Playfair Display', 'serif'],
+                        'inter': ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'dark-red': '#8B0000',
+                        'velvet-red': '#9D1B1B',
+                        'light-red': '#B22222',
+                        'deep-purple': '#4A235A',
+                        'royal-purple': '#5B2C6F',
+                        'light-purple': '#7D3C98',
+                        'dark-gold': '#B8860B',
+                        'gold': '#D4AF37',
+                        'light-gold': '#F7DC6F',
+                        'dark-bg': '#0A0A0A',
+                        'card-bg': '#1A1A1A',
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-glow': 'pulse-glow 2s ease-in-out infinite',
+                        'slide-up': 'slide-up 0.5s ease-out',
+                        'fade-in': 'fade-in 0.7s ease-out',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        'pulse-glow': {
+                            '0%, 100%': { opacity: 1 },
+                            '50%': { opacity: 0.7 },
+                        },
+                        'slide-up': {
+                            '0%': { transform: 'translateY(20px)', opacity: 0 },
+                            '100%': { transform: 'translateY(0)', opacity: 1 },
+                        },
+                        'fade-in': {
+                            '0%': { opacity: 0 },
+                            '100%': { opacity: 1 },
+                        },
+                    },
+                    boxShadow: {
+                        'elegant': '0 10px 30px rgba(0, 0, 0, 0.3)',
+                        'glow': '0 0 30px rgba(212, 175, 55, 0.3)',
+                        'inner-glow': 'inset 0 0 20px rgba(212, 175, 55, 0.1)',
+                    },
+                    backgroundImage: {
+                        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+                        'gradient-gold': 'linear-gradient(135deg, #D4AF37 0%, #F7DC6F 100%)',
+                        'gradient-purple': 'linear-gradient(135deg, #5B2C6F 0%, #7D3C98 100%)',
+                        'gradient-red': 'linear-gradient(135deg, #8B0000 0%, #B22222 100%)',
+                    }
+                }
+            }
+        }
+    </script>
+
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
         body {
-            background-color: #0f0f0f;
-            color: #fff;
-            font-family: 'Lato', sans-serif;
+            background: linear-gradient(135deg, #0A0A0A 0%, #1A1A1A 50%, #0A0A0A 100%);
+            color: #E5E5E5;
+            min-height: 100vh;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
         }
-        .card-container {
-            display: flex;
-            gap: 20px;
-            overflow-x: auto;
-            padding: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
+
+        /* Fundo decorativo sutil */
+        .bg-pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(139, 0, 0, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(91, 44, 111, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(212, 175, 55, 0.03) 0%, transparent 50%);
+            z-index: -1;
         }
-        .pin-card {
-            width: 300px;
-            height: 533px; /* Proporção 9:16 (Pinterest/TikTok) */
+
+        /* Elementos decorativos flutuantes */
+        .floating-ornament {
+            position: absolute;
+            font-size: 1.5rem;
+            opacity: 0.1;
+            z-index: -1;
+        }
+
+        /* Cards elegantes */
+        .elegant-card {
+            background: rgba(26, 26, 26, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            border-radius: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .elegant-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(212, 175, 55, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(212, 175, 55, 0.1);
+        }
+
+        /* Botões elegantes */
+        .elegant-btn {
+            background: linear-gradient(135deg, rgba(139, 0, 0, 0.9) 0%, rgba(157, 27, 27, 0.9) 100%);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 12px;
+            padding: 14px 24px;
+            color: white;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-between;
-            padding: 30px 20px;
-            text-align: center;
-            border: 1px solid #333;
-            transition: transform 0.3s;
         }
-        .pin-card:hover {
-            transform: scale(1.02);
-            border-color: #d4af37;
-        }
-        
-        /* Estilos Específicos dos Cards */
-        
-        /* CARD 1: O MISTÉRIO (Foco no Quiz) */
-        .card-quiz {
-            background: linear-gradient(180deg, #2a0404 0%, #000000 100%);
-        }
-        .card-quiz::before {
-            content: "";
+
+        .elegant-btn::before {
+            content: '';
             position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4z' fill='%238a0a0a' fill-opacity='0.2'/%3E%3C/svg%3E");
-            opacity: 0.5;
-        }
-        
-        /* CARD 2: A TRINDADE (Foco no Conteúdo) */
-        .card-content {
-            background: radial-gradient(circle at center, #1a0101 0%, #450a0a 100%);
-            border: 1px solid #d4af37;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.5s ease;
         }
 
-        /* CARD 3: MINIMALISTA (Foco na Marca) */
-        .card-brand {
-            background-color: #000;
-            border: 2px solid #8a0a0a;
+        .elegant-btn:hover::before {
+            left: 100%;
         }
 
-        /* Elementos Visuais */
-        .font-cinzel { font-family: 'Cinzel', serif; }
-        .font-playfair { font-family: 'Playfair Display', serif; }
-        
-        .text-gold { color: #d4af37; text-shadow: 0 2px 4px rgba(0,0,0,0.8); }
-        .text-red { color: #dc2626; }
-        
-        .btn-fake {
-            background: #d4af37;
-            color: #000;
-            padding: 10px 25px;
-            font-weight: bold;
-            border-radius: 50px;
-            text-transform: uppercase;
-            font-size: 14px;
-            margin-top: 20px;
-            box-shadow: 0 0 15px rgba(212,175,55,0.4);
+        .elegant-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(139, 0, 0, 0.3);
+            border-color: rgba(212, 175, 55, 0.4);
         }
 
-        .icon-large {
-            width: 80px;
-            height: 80px;
-            margin-bottom: 10px;
-            filter: drop-shadow(0 0 10px rgba(220, 38, 38, 0.5));
+        /* Badges elegantes */
+        .elegant-badge {
+            background: linear-gradient(135deg, #5B2C6F 0%, #7D3C98 100%);
+            border-radius: 20px;
+            padding: 4px 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        /* Separadores elegantes */
+        .elegant-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.3), transparent);
+            margin: 2rem 0;
+        }
+
+        /* Texto com gradiente */
+        .gradient-text {
+            background: linear-gradient(135deg, #D4AF37 0%, #F7DC6F 50%, #D4AF37 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .gradient-text-purple {
+            background: linear-gradient(135deg, #7D3C98 0%, #C39BD3 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .gradient-text-red {
+            background: linear-gradient(135deg, #B22222 0%, #E74C3C 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Animações suaves */
+        .animate-slide-up {
+            animation: slide-up 0.5s ease-out;
+        }
+
+        .animate-fade-in {
+            animation: fade-in 0.7s ease-out;
+        }
+
+        /* Scrollbar personalizada */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #1A1A1A;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #8B0000, #5B2C6F);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(135deg, #B22222, #7D3C98);
+        }
+
+        /* Efeito de vidro */
+        .glass-effect {
+            background: rgba(26, 26, 26, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        /* Tooltip elegante */
+        .tooltip {
+            position: relative;
+        }
+
+        .tooltip:hover::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(26, 26, 26, 0.95);
+            color: #E5E5E5;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 0.875rem;
+            white-space: nowrap;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            margin-bottom: 8px;
+            z-index: 100;
+        }
+
+        /* Loading animado */
+        .loading-dots::after {
+            content: '';
+            animation: loading-dots 1.5s infinite;
+        }
+
+        @keyframes loading-dots {
+            0%, 20% { content: ''; }
+            40% { content: '.'; }
+            60% { content: '..'; }
+            80%, 100% { content: '...'; }
         }
     </style>
 </head>
-<body>
+<body class="antialiased">
+    <!-- Fundo decorativo -->
+    <div class="bg-pattern"></div>
 
-    <div class="text-center pt-10 pb-5">
-        <h1 class="text-3xl font-cinzel text-gold mb-2">Conceitos para Pinterest & Stories</h1>
-        <p class="text-gray-400">Use estas ideias visuais para criar seus cards no Canva</p>
-    </div>
+    <!-- Ornamentos flutuantes -->
+    <div class="floating-ornament animate-float" style="top: 10%; left: 5%;">✧</div>
+    <div class="floating-ornament animate-float" style="top: 20%; right: 10%; animation-delay: 1s;">✦</div>
+    <div class="floating-ornament animate-float" style="bottom: 30%; left: 15%; animation-delay: 2s;">❖</div>
+    <div class="floating-ornament animate-float" style="bottom: 20%; right: 20%; animation-delay: 3s;">♱</div>
 
-    <div class="card-container">
-
-        <!-- CARD 1: QUIZ -->
-        <div class="pin-card card-quiz">
-            <div class="relative z-10 w-full h-full flex flex-col justify-between items-center">
-                <div class="mt-4">
-                    <p class="text-sm tracking-widest uppercase mb-2 text-red-500">Autoconhecimento</p>
-                    <h2 class="text-3xl font-cinzel text-gold leading-tight">Quem é a sua<br>Guardiã?</h2>
+    <main class="min-h-screen max-w-4xl mx-auto px-4 py-8 animate-fade-in">
+        <!-- Cabeçalho Principal -->
+        <header class="text-center mb-12 animate-slide-up">
+            <div class="relative inline-block mb-6">
+                <!-- Anel decorativo -->
+                <div class="absolute -inset-4 rounded-full border-2 border-transparent" style="
+                    background: linear-gradient(135deg, #8B0000, #5B2C6F, #D4AF37, #8B0000) border-box;
+                    -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+                    -webkit-mask-composite: xor;
+                    mask-composite: exclude;
+                    animation: spin 20s linear infinite;
+                "></div>
+                
+                <!-- Foto de perfil -->
+                <div class="relative w-36 h-36 rounded-full overflow-hidden border-4 border-card-bg shadow-elegant">
+                    <img src="https://raw.githubusercontent.com/alexialuzdeferro/pombagira/main/uma_ilustra_o_vibrante_no_estilo_retr_com%20(2).jpeg" 
+                         alt="Alexia Luz de Ferro" 
+                         class="w-full h-full object-cover transform transition-transform duration-500 hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-dark-red/20 to-transparent"></div>
                 </div>
                 
-                <div class="animate-pulse">
-                    <svg class="w-24 h-24 text-red-600" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"/></svg>
-                </div>
-
-                <div>
-                    <p class="font-playfair italic text-lg mb-4">"Ela caminha ao seu lado, mesmo que você não veja."</p>
-                    <div class="btn-fake">Faça o Teste Agora</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- CARD 2: OBRAS PRIMAS (Grimório/Pontos) -->
-        <div class="pin-card card-content">
-            <div class="relative z-10 w-full h-full flex flex-col justify-between items-center">
-                <div class="border-b border-yellow-600/30 pb-4 w-full">
-                    <h2 class="text-2xl font-cinzel text-white uppercase tracking-widest">Acervo<br>Sagrado</h2>
-                </div>
-
-                <div class="flex flex-col gap-6 w-full px-4">
-                    <div class="flex items-center gap-4 bg-black/40 p-3 rounded-lg border border-red-900">
-                        <span class="text-2xl">📖</span>
-                        <div class="text-left">
-                            <h3 class="font-bold text-gold text-sm uppercase">Grimório</h3>
-                            <p class="text-xs text-gray-300">Conhecimento Oculto</p>
-                        </div>
-                    </div>
-                    <div class="flex items-center gap-4 bg-black/40 p-3 rounded-lg border border-red-900">
-                        <span class="text-2xl">🎵</span>
-                        <div class="text-left">
-                            <h3 class="font-bold text-gold text-sm uppercase">Pontos Cantados</h3>
-                            <p class="text-xs text-gray-300">A força do atabaque</p>
-                        </div>
-                    </div>
-                    <div class="flex items-center gap-4 bg-black/40 p-3 rounded-lg border border-red-900">
-                        <span class="text-2xl">🔱</span>
-                        <div class="text-left">
-                            <h3 class="font-bold text-gold text-sm uppercase">Falanges</h3>
-                            <p class="text-xs text-gray-300">Hierarquia Real</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="btn-fake" style="background: transparent; border: 1px solid #d4af37; color: #d4af37;">Acessar Biblioteca</div>
-            </div>
-        </div>
-
-        <!-- CARD 3: MARCA (Tridente) -->
-        <div class="pin-card card-brand">
-            <div class="relative z-10 w-full h-full flex flex-col justify-center items-center">
-                <div class="absolute top-5 left-0 w-full text-center opacity-50 text-xs tracking-[0.5em] uppercase">Alexia Luz de Ferro</div>
-                
-                <div class="relative mb-8">
-                    <div class="absolute -inset-4 bg-red-600 blur-xl opacity-20 animate-pulse"></div>
-                    <svg class="w-32 h-32 text-gold" viewBox="0 0 100 100" fill="currentColor">
-                        <path d="M50 10 C 48 10 46 12 46 14 L 46 65 C 30 55 20 40 20 25 C 20 20 15 20 15 25 C 15 50 35 70 46 75 L 46 90 C 46 95 54 95 54 90 L 54 75 C 65 70 85 50 85 25 C 85 20 80 20 80 25 C 80 40 70 55 54 65 L 54 14 C 54 12 52 10 50 10 Z M 35 25 L 35 35 L 65 35 L 65 25 M 50 10 L 50 35" stroke="currentColor" stroke-width="1" />
+                <!-- Ícone decorativo -->
+                <div class="absolute -bottom-2 -right-2 bg-card-bg p-3 rounded-full border border-gold/20 shadow-glow">
+                    <svg class="w-6 h-6 text-gold" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
                     </svg>
                 </div>
-
-                <h1 class="text-4xl font-cinzel text-white mb-2">Laroyê</h1>
-                <p class="text-red-500 font-playfair italic">"Quem deve paga,<br>quem merece recebe."</p>
-
-                <div class="absolute bottom-10 w-full text-center">
-                    <div class="text-xs text-gray-500 mb-1">Visite o Portal</div>
-                    <!-- Link ajustado para caber sem cortar -->
-                    <div class="text-gold font-bold" style="font-size: 13px;">alexialuzdeferro.github.io/pombagira</div>
-                </div>
             </div>
+
+            <h1 class="font-cinzel text-4xl md:text-5xl font-bold mb-4">
+                <span class="gradient-text">ALMAS DE POMBAGIRA</span>
+            </h1>
+            
+            <p class="font-playfair text-xl text-light-gold/80 mb-3 italic">
+                "Lux in Tenebris • Vis Aeterna"
+            </p>
+            
+            <div class="flex items-center justify-center gap-4 mb-6">
+                <span class="h-px w-16 bg-gradient-to-r from-transparent to-gold/30"></span>
+                <span class="text-gold font-medium">Alexia Melusine</span>
+                <span class="h-px w-16 bg-gradient-to-r from-gold/30 to-transparent"></span>
+            </div>
+
+            <div class="flex flex-wrap justify-center gap-3">
+                <span class="elegant-badge">Rosa de Fogo</span>
+                <span class="elegant-badge">Luz de Ferro</span>
+                <span class="elegant-badge">Mojubá</span>
+            </div>
+        </header>
+
+        <!-- Trindade de Obras -->
+        <section class="mb-16 animate-slide-up" style="animation-delay: 0.1s;">
+            <h2 class="font-cinzel text-2xl text-center mb-8 gradient-text">
+                Obras Sagradas
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Pontos Cantados -->
+                <a href="https://alexialuzdeferro.github.io/PONTOS-CANTADOS/" target="_blank" 
+                   class="elegant-card p-6 text-center group relative overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-red opacity-0 group-hover:opacity-10 transition-opacity duration-500"></div>
+                    <div class="relative">
+                        <div class="w-20 h-20 mx-auto mb-4 rounded-full bg-gradient-red flex items-center justify-center shadow-glow">
+                            <span class="text-3xl text-white">🎵</span>
+                        </div>
+                        <h3 class="font-cinzel text-xl font-semibold mb-2 gradient-text-red">Pontos Cantados</h3>
+                        <p class="text-gray-400 text-sm mb-4">Cantos sagrados e invocações</p>
+                        <div class="h-px w-12 mx-auto bg-gradient-red mb-4"></div>
+                        <span class="text-gold text-sm font-medium">Acessar →</span>
+                    </div>
+                </a>
+
+                <!-- Grimório -->
+                <a href="https://alexialuzdeferro.github.io/grimorio-das-pombagiras/" target="_blank" 
+                   class="elegant-card p-6 text-center group relative overflow-hidden md:transform md:scale-105">
+                    <div class="absolute inset-0 bg-gradient-purple opacity-0 group-hover:opacity-10 transition-opacity duration-500"></div>
+                    <div class="relative">
+                        <div class="w-20 h-20 mx-auto mb-4 rounded-full bg-gradient-purple flex items-center justify-center shadow-glow">
+                            <span class="text-3xl text-white">📖</span>
+                        </div>
+                        <h3 class="font-cinzel text-xl font-semibold mb-2 gradient-text-purple">Grimório Sagrado</h3>
+                        <p class="text-gray-400 text-sm mb-4">Sabedoria ancestral e magias</p>
+                        <div class="h-px w-12 mx-auto bg-gradient-purple mb-4"></div>
+                        <span class="text-gold text-sm font-medium">Acessar →</span>
+                    </div>
+                </a>
+
+                <!-- Portal Real -->
+                <a href="https://alexialuzdeferro.github.io/Pombagiras/" target="_blank" 
+                   class="elegant-card p-6 text-center group relative overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-gold opacity-0 group-hover:opacity-10 transition-opacity duration-500"></div>
+                    <div class="relative">
+                        <div class="w-20 h-20 mx-auto mb-4 rounded-full bg-gradient-gold flex items-center justify-center shadow-glow">
+                            <span class="text-3xl text-dark-bg">👑</span>
+                        </div>
+                        <h3 class="font-cinzel text-xl font-semibold mb-2 gradient-text">O Portal Real</h3>
+                        <p class="text-gray-400 text-sm mb-4">Conhecimento e conexão</p>
+                        <div class="h-px w-12 mx-auto bg-gradient-gold mb-4"></div>
+                        <span class="text-gold text-sm font-medium">Acessar →</span>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- Quiz em Destaque -->
+        <section class="mb-16 animate-slide-up" style="animation-delay: 0.2s;">
+            <a href="https://alexialuzdeferro.github.io/Quizz--Pombagiras-/" target="_blank" 
+               class="elegant-card p-8 relative overflow-hidden group">
+                <div class="absolute inset-0 bg-gradient-radial from-dark-red/20 via-transparent to-transparent"></div>
+                <div class="relative flex flex-col md:flex-row items-center justify-between gap-6">
+                    <div class="flex-1">
+                        <h3 class="font-cinzel text-2xl font-bold mb-3 gradient-text-red">
+                            Descubra Sua Pombagira
+                        </h3>
+                        <p class="text-gray-300 mb-4">
+                            Faça o teste sagrado para descobrir qual Pombagira guia seu caminho e receba insights sobre sua jornada espiritual.
+                        </p>
+                        <div class="flex items-center gap-2">
+                            <span class="elegant-badge">Teste Sagrado</span>
+                            <span class="elegant-badge">Guia Espiritual</span>
+                        </div>
+                    </div>
+                    <div class="flex-shrink-0">
+                        <div class="w-20 h-20 rounded-full bg-gradient-red flex items-center justify-center animate-pulse-glow">
+                            <span class="text-3xl">🔮</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </section>
+
+        <!-- Conteúdo Principal -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
+            <!-- Quem Sou -->
+            <section class="animate-slide-up" style="animation-delay: 0.3s;">
+                <div class="elegant-card p-8 h-full">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-12 h-12 rounded-full bg-gradient-red flex items-center justify-center">
+                            <span class="text-xl">⚡</span>
+                        </div>
+                        <h2 class="font-cinzel text-2xl font-semibold gradient-text-red">Quem Sou</h2>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <p class="text-gray-300 leading-relaxed">
+                            <span class="font-semibold text-light-red">Alexia Melusine</span> — pessoa não binária com profunda conexão espiritual com as Pombagiras. Caminho entre os véus do mistério, fluindo como as marés da lua entre o visível e o oculto.
+                        </p>
+                        
+                        <div class="bg-card-bg/50 p-5 rounded-lg border border-gold/10">
+                            <p class="text-gold font-playfair italic text-center">
+                                "Dançando entre as constelações e os véus do mistério. Sou a balança que oscila entre o visível e o oculto."
+                            </p>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-4 pt-4">
+                            <div class="text-center p-4 rounded-lg border border-red-900/30 bg-dark-red/10">
+                                <p class="font-semibold text-light-red">Alexia Rosa de Fogo</p>
+                            </div>
+                            <div class="text-center p-4 rounded-lg border border-purple-900/30 bg-deep-purple/10">
+                                <p class="font-semibold text-light-purple">Alexia Luz de Ferro</p>
+                            </div>
+                        </div>
+
+                        <div class="pt-6 border-t border-gold/10">
+                            <p class="text-center text-gold font-playfair italic">
+                                "Quem deve paga, quem merece recebe."
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Redes Sociais -->
+            <section class="animate-slide-up" style="animation-delay: 0.4s;">
+                <div class="elegant-card p-8 h-full">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-12 h-12 rounded-full bg-gradient-purple flex items-center justify-center">
+                            <span class="text-xl">🌐</span>
+                        </div>
+                        <h2 class="font-cinzel text-2xl font-semibold gradient-text-purple">Conecte-se</h2>
+                    </div>
+
+                    <div class="space-y-4">
+                        <!-- Links principais -->
+                        <div class="space-y-3">
+                            <a href="https://bio.site/AlmasdePombagira" target="_blank" 
+                               class="elegant-btn flex items-center justify-between">
+                                <span class="flex items-center gap-3">
+                                    <span class="text-lg">🔗</span>
+                                    <span>Bio Site Oficial</span>
+                                </span>
+                                <span class="text-gold">→</span>
+                            </a>
+
+                            <a href="https://linktr.ee/alexiarosadefogo" target="_blank" 
+                               class="elegant-btn flex items-center justify-between">
+                                <span class="flex items-center gap-3">
+                                    <span class="text-lg">🌿</span>
+                                    <span>Alexia Rosa de Fogo</span>
+                                </span>
+                                <span class="text-gold">→</span>
+                            </a>
+                        </div>
+
+                        <div class="elegant-divider"></div>
+
+                        <!-- Redes sociais -->
+                        <h3 class="font-cinzel text-lg text-center mb-4">Redes Sociais</h3>
+                        
+                        <div class="grid grid-cols-3 gap-3">
+                            <a href="https://www.youtube.com/@almasdepombagira" target="_blank" 
+                               class="glass-effect p-4 rounded-lg flex flex-col items-center justify-center hover:border-red-900/30 transition-all group">
+                                <span class="text-2xl mb-2 group-hover:scale-110 transition-transform">▶️</span>
+                                <span class="text-sm font-medium">YouTube</span>
+                            </a>
+
+                            <a href="https://www.instagram.com/almasdepombagira" target="_blank" 
+                               class="glass-effect p-4 rounded-lg flex flex-col items-center justify-center hover:border-purple-900/30 transition-all group">
+                                <span class="text-2xl mb-2 group-hover:scale-110 transition-transform">📸</span>
+                                <span class="text-sm font-medium">Instagram</span>
+                            </a>
+
+                            <a href="https://www.tiktok.com/@almasdepombagira" target="_blank" 
+                               class="glass-effect p-4 rounded-lg flex flex-col items-center justify-center hover:border-gold/30 transition-all group">
+                                <span class="text-2xl mb-2 group-hover:scale-110 transition-transform">🎵</span>
+                                <span class="text-sm font-medium">TikTok</span>
+                            </a>
+                        </div>
+
+                        <div class="grid grid-cols-3 gap-3 mt-3">
+                            <a href="https://whatsapp.com/channel/0029VbBs2AnJkK7J9J0nLr2G" target="_blank" 
+                               class="glass-effect p-4 rounded-lg flex flex-col items-center justify-center hover:border-green-900/30 transition-all group">
+                                <span class="text-2xl mb-2 group-hover:scale-110 transition-transform">💬</span>
+                                <span class="text-sm font-medium">WhatsApp</span>
+                            </a>
+
+                            <a href="https://t.me/pomba_giras" target="_blank" 
+                               class="glass-effect p-4 rounded-lg flex flex-col items-center justify-center hover:border-blue-900/30 transition-all group">
+                                <span class="text-2xl mb-2 group-hover:scale-110 transition-transform">📨</span>
+                                <span class="text-sm font-medium">Telegram</span>
+                            </a>
+
+                            <a href="https://discord.gg/gWZP8R7Dqu" target="_blank" 
+                               class="glass-effect p-4 rounded-lg flex flex-col items-center justify-center hover:border-indigo-900/30 transition-all group">
+                                <span class="text-2xl mb-2 group-hover:scale-110 transition-transform">⚔️</span>
+                                <span class="text-sm font-medium">Discord</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </div>
 
-    </div>
+        <!-- Links Adicionais -->
+        <section class="animate-slide-up" style="animation-delay: 0.5s;">
+            <div class="elegant-card p-8">
+                <h2 class="font-cinzel text-2xl text-center mb-8 gradient-text">Mais Canais</h2>
+                
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <a href="https://www.kwai.com/@AlexiaRosadeFogo" target="_blank" 
+                       class="glass-effect p-4 rounded-lg flex flex-col items-center justify-center hover:border-orange-900/30 transition-all group">
+                        <span class="text-xl mb-2 group-hover:scale-110 transition-transform">🟧</span>
+                        <span class="text-sm font-medium text-center">Kwai Alexia</span>
+                    </a>
 
+                    <a href="https://www.tiktok.com/@alexiarosadefogo" target="_blank" 
+                       class="glass-effect p-4 rounded-lg flex flex-col items-center justify-center hover:border-gray-900/30 transition-all group">
+                        <span class="text-xl mb-2 group-hover:scale-110 transition-transform">👤</span>
+                        <span class="text-sm font-medium text-center">TikTok Alexia</span>
+                    </a>
+
+                    <a href="https://www.kwai.com/@AlmasdePombagira" target="_blank" 
+                       class="glass-effect p-4 rounded-lg flex flex-col items-center justify-center hover:border-orange-900/30 transition-all group">
+                        <span class="text-xl mb-2 group-hover:scale-110 transition-transform">🟧</span>
+                        <span class="text-sm font-medium text-center">Kwai Almas</span>
+                    </a>
+
+                    <a href="https://www.tiktok.com/@espelhosdepombagira" target="_blank" 
+                       class="glass-effect p-4 rounded-lg flex flex-col items-center justify-center hover:border-purple-900/30 transition-all group">
+                        <span class="text-xl mb-2 group-hover:scale-110 transition-transform">✨</span>
+                        <span class="text-sm font-medium text-center">Espelhos</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Rodapé -->
+        <footer class="mt-16 text-center animate-slide-up" style="animation-delay: 0.6s;">
+            <div class="elegant-divider"></div>
+            
+            <div class="flex justify-center mb-6">
+                <div class="flex gap-6">
+                    <span class="floating-ornament opacity-30">✧</span>
+                    <span class="floating-ornament opacity-30">✦</span>
+                    <span class="floating-ornament opacity-30">❖</span>
+                    <span class="floating-ornament opacity-30">♱</span>
+                </div>
+            </div>
+
+            <div class="mb-6">
+                <p class="text-gray-500 text-sm mb-2">
+                    © 2026 Almas de Pombagira • Todos os direitos reservados
+                </p>
+                <p class="text-gray-600 text-xs mb-4">
+                    Desenvolvido por Alexia Melusine
+                </p>
+                
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-card-bg border border-gold/10">
+                    <span class="text-gold text-sm">Visitas:</span>
+                    <span id="counter-value" class="font-mono text-white">...</span>
+                </div>
+            </div>
+
+            <p class="font-playfair text-gold italic text-lg">
+                Mojubá às Guardiãs
+            </p>
+        </footer>
+    </main>
+
+    <script>
+        // Contador de visitas elegante
+        document.addEventListener('DOMContentLoaded', () => {
+            // Número base elegante
+            const baseVisits = 28476;
+            
+            // Recuperar visitas do usuário
+            let userVisits = localStorage.getItem('user_visits_pombagira');
+            
+            if (!userVisits) {
+                userVisits = 1;
+            } else {
+                userVisits = parseInt(userVisits) + 1;
+            }
+
+            localStorage.setItem('user_visits_pombagira', userVisits);
+
+            // Calcular total
+            const totalDisplay = baseVisits + userVisits;
+            const counterElement = document.getElementById('counter-value');
+            
+            // Animação de contagem suave
+            let count = 0;
+            const increment = totalDisplay / 30;
+            const timer = setInterval(() => {
+                count += increment;
+                if (count >= totalDisplay) {
+                    count = totalDisplay;
+                    clearInterval(timer);
+                    counterElement.textContent = totalDisplay.toLocaleString('pt-BR');
+                } else {
+                    counterElement.textContent = Math.floor(count).toLocaleString('pt-BR');
+                }
+            }, 30);
+
+            // Efeitos de hover nos cards
+            const cards = document.querySelectorAll('.elegant-card');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    card.style.transform = 'translateY(-8px)';
+                });
+                
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'translateY(0)';
+                });
+            });
+
+            // Efeito de digitação para elementos específicos
+            const typeWriter = (element, text, speed = 50) => {
+                let i = 0;
+                const originalText = element.textContent;
+                element.textContent = '';
+                
+                const timer = setInterval(() => {
+                    if (i < text.length) {
+                        element.textContent += text.charAt(i);
+                        i++;
+                    } else {
+                        clearInterval(timer);
+                    }
+                }, speed);
+            };
+
+            // Animar elementos quando aparecem na tela
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // Observar todos os elementos com animação
+            document.querySelectorAll('.animate-slide-up').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(el);
+            });
+
+            // Efeito de brilho nos botões
+            const buttons = document.querySelectorAll('.elegant-btn');
+            buttons.forEach(btn => {
+                btn.addEventListener('mouseenter', () => {
+                    btn.style.boxShadow = '0 15px 30px rgba(139, 0, 0, 0.4)';
+                });
+                
+                btn.addEventListener('mouseleave', () => {
+                    btn.style.boxShadow = '0 10px 20px rgba(139, 0, 0, 0.3)';
+                });
+            });
+
+            // Efeito de parallax sutil no background
+            window.addEventListener('scroll', () => {
+                const scrolled = window.pageYOffset;
+                const rate = scrolled * -0.3;
+                document.querySelector('.bg-pattern').style.transform = `translateY(${rate}px)`;
+            });
+
+            // Som de interação suave
+            const clickSound = new Audio('data:audio/wav;base64,UklGRigAAABXQVZFZm10IBIAAAABAAEAQB8AAEAfAAABAAgAZGF0YQ');
+            
+            document.querySelectorAll('a, button').forEach(element => {
+                element.addEventListener('click', () => {
+                    clickSound.currentTime = 0;
+                    clickSound.play().catch(() => {});
+                });
+            });
+        });
+
+        // Animar o anel decorativo
+        const styleSheet = document.createElement('style');
+        styleSheet.textContent = `
+            @keyframes spin {
+                from { transform: rotate(0deg); }
+                to { transform: rotate(360deg); }
+            }
+        `;
+        document.head.appendChild(styleSheet);
+    </script>
 </body>
 </html>
